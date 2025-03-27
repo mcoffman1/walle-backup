@@ -1,0 +1,14 @@
+[Unit]
+Description=Play Startup Sound
+After=network.target
+
+[Service]
+User=walle
+Group=walle
+Environment="PULSE_SERVER=/run/user/1000/pulse/native"
+ExecStart=/usr/bin/play /home/walle/sounds/walle/power_up.wav vol 1
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,12 @@
+
+[Unit]
+Description=ROS Service
+After=network.target
+
+[Service]
+ExecStart=/bin/bash -c "sleep 1 && /home/walle/bash_files/ros_startup.sh"
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+

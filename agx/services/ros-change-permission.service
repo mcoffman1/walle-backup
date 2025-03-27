@@ -1,0 +1,13 @@
+[Unit]
+Description=Set Custom Permissions for /mnt/docker
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/chmod -R +r /mnt/docker
+ExecStart=/bin/chmod -R +x /mnt/docker
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
+
