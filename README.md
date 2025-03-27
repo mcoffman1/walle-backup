@@ -16,7 +16,7 @@ This repository serves as a **backup** of an ongoing robotics project involving 
 
 ### 🧩 Recommended Packages to Clone or Install
 
-The following packages are referenced in this project and should be manually cloned as shown in class:
+The following packages are referenced in this project and can be manually cloned and used as shown in class:
 
 - `hector_slam`
 - `ros-imu-bno055`
