@@ -1,0 +1,4 @@
+
+<launch>
+<node pkg="localization_data_pub" type="initalpose.py" name="initalpose"/>
+</launch> 

@@ -1,0 +1,13 @@
+<!--<?xml version="1.0"?>-->
+
+<launch>
+
+<node pkg="walle_vision" type="launcher.py" name="launcher"  output="screen">
+	<param name="rospackage" value="$(find walle_vision)"/>
+</node>
+
+<node pkg="navstack_pub" type="launch_drive.py" name="auto_drive"/>
+
+</launch>
+
+

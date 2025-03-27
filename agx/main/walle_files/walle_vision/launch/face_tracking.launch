@@ -1,0 +1,9 @@
+<!--<?xml version="1.0"?>-->
+
+<launch>
+
+<node pkg="walle_vision" type="face_coord_pub.py" name="Face_Tracker">
+
+</node>
+
+</launch>

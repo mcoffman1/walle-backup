@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+
+<robot name="Wall-E">
+  <link name="base_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://walle_model/meshes/wallebody.dae"/>
+      </geometry>
+    </visual>
+  </link>
+  
+  <joint name="base_link_to_wheel_base" type="fixed">
+    <parent link="base_link"/>
+    <child link="wheel_base"/>
+  </joint>
+  
+  <link name="wheel_base">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://walle_model/meshes/wheels.dae"/>
+      </geometry>
+    </visual>
+  </link>
+  
+  <joint name="neck_joint1" type="revolute">
+    <axis xyz="0 1 0"/>
+    <limit effort="1000.0" lower="-3.14159" upper="1.57" velocity="0.5"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="neck1"/>
+  </joint>
+  
+  <link name="neck1">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://walle_model/meshes/neck1.dae"/>
+      </geometry>
+    </visual>
+  </link>
+  
+  <joint name="neck_joint2" type="revolute">
+    <axis xyz="0 1 0"/>
+    <limit effort="1000.0" lower="0.0" upper="0.548" velocity="0.5"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="neck1"/>
+    <child link="neck2"/>
+  </joint>
+  
+  <link name="neck2">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://walle_model/meshes/neck2.dae"/>
+      </geometry>
+    </visual>
+  </link>
+  
+  <joint name="neck_joint3" type="revolute">
+    <axis xyz="0 0 1"/>
+    <limit effort="1000.0" lower="0.0" upper="0.548" velocity="0.5"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="neck2"/>
+    <child link="neck3"/>
+  </joint>
+  
+  <link name="neck3">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://walle_model/meshes/neck3.dae"/>
+      </geometry>
+    </visual>
+  </link>
+  
+  <joint name="head_joint" type="revolute">
+    <axis xyz="0 1 0"/>
+    <limit effort="1000.0" lower="0.0" upper="0.548" velocity="0.5"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="neck3"/>
+    <child link="head"/>
+  </joint>
+  
+  <link name="head">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://walle_model/meshes/head.dae"/>
+      </geometry>
+    </visual>
+  </link>
+  
+  <joint name="reye_joint" type="revolute">
+    <axis xyz="1 0 0"/>
+    <limit effort="1000.0" lower="0.0" upper="0.548" velocity="0.5"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="head"/>
+    <child link="reye"/>
+  </joint>
+  
+  <link name="reye">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://walle_model/meshes/reye.dae"/>
+      </geometry>
+    </visual>
+  </link>
+  
+  <joint name="leye_joint" type="revolute">
+    <axis xyz="1 0 0"/>
+    <limit effort="1000.0" lower="0.0" upper="0.548" velocity="0.5"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="head"/>
+    <child link="leye"/>
+  </joint>
+  
+  <link name="leye">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://walle_model/meshes/leye.dae"/>
+      </geometry>
+    </visual>
+  </link>
+  
+</robot>

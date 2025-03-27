@@ -1,0 +1,6 @@
+<launch>
+    <!-- Your other ROS nodes -->
+    <node name="docker_nodes" pkg="walle_vision" type="rundetectnet.sh" output="screen" />
+</launch>
+
+
