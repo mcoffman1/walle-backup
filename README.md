@@ -6,3 +6,4 @@
       - ros-imu-bno055
       - slam_gmapping
       - urdf_tutorial
+      - jetson inference
