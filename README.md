@@ -14,15 +14,18 @@ This repository serves as a **backup** of an ongoing robotics project involving 
   - Editing configuration files
   - Resolving dependencies and environment-specific issues
 
-## 🧩 Recommended Packages to Clone or Install
+### 🧩 Recommended Packages to Clone or Install
 
-The following packages are referenced as **placeholders** in this repository. You will need to manually clone or install them from their respective sources, as shown in class:
+The following packages are referenced in this project and should be manually cloned as shown in class:
 
 - `hector_slam`
 - `ros-imu-bno055`
 - `slam_gmapping`
 - `urdf_tutorial`
 - `jetson-inference`
+- [`ros_essentials_cpp`](https://github.com/aniskoubaa/ros_essentials_cpp)  
+  > This package was created and published by [Professor Anis Koubaa](https://github.com/aniskoubaa). Credit goes to the original author.  
+  > It is used here for educational purposes and as a reference resource.
 
 These packages provide additional functionality such as SLAM, IMU integration, URDF modeling, and deep learning inference.
 
