@@ -1,0 +1,13 @@
+[Unit]
+Description=Flask Server for Running ROS Scripts
+After=network.target
+
+[Service]
+User=walle
+WorkingDirectory=/home/walle/webui
+ExecStart=/usr/bin/python3 /home/walle/webui/launch_server.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

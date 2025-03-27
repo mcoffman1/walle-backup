@@ -1,0 +1,10 @@
+[Unit]
+Description=RPLidar Logger Service
+
+[Service]
+ExecStart=/usr/bin/bash /home/walle/Documents/bash_files/shutdown.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+

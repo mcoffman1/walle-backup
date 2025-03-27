@@ -1,0 +1,13 @@
+[Unit]
+Description=Rosserial Service
+After=network.target
+
+[Service]
+ExecStart=/home/walle/Documents/bash_files/rosserial_startup.sh
+User=walle
+Group=walle
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+

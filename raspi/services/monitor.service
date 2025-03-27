@@ -1,0 +1,14 @@
+[Unit]
+Description=RPLidar Logger Service
+
+[Service]
+ExecStart=/usr/bin/bash /home/walle/Documents/bash_files/monitor.sh
+Restart=on-failure
+User=walle
+Group=walle
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/walle/.Xauthority
+
+[Install]
+WantedBy=multi-user.target
+
