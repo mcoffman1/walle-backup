@@ -1,0 +1,27 @@
+numpy
+pyyaml
+requests
+tqdm
+Pillow
+pycuda
+nltk>=3.5
+wget
+psutil
+setproctitle
+boto3
+pandas
+urllib3
+dash
+dash_auth
+dash_bootstrap_components
+dash_bootstrap_templates
+mergedeep
+onnx
+onnxruntime
+tf2onnx
+git+https://github.com/dusty-nv/dash-draggable
+git+https://github.com/facebookresearch/detectron2.git
+git+https://github.com/NVIDIA/TensorRT#subdirectory=tools/onnx-graphsurgeon
+--extra-index-url https://pypi.ngc.nvidia.com
+onnx_graphsurgeon>=0.3.20
+onnx-graphsurgeon
