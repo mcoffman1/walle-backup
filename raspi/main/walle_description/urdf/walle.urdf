@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<robot name="Wall-E">
+  <link name="base_link">
+    <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://walle_description/meshes/wallebody.dae"/>
+      </geometry>
+    </visual>
+  </link>
+  
+  <joint name="neck1_joint" type="revolute">
+    <axis xyz="0 1 0"/>
+    <limit effort="1000.0" lower="-1.57" upper="1.57" velocity="0.5"/>
+    <origin rpy="0 0 0" xyz="-0.356 0 0.363"/>
+    <parent link="base_link"/>
+    <child link="neck1"/>
+  </joint>
+  
+  <link name="neck1">
+    <visual>
+      <origin rpy="0 0 0" xyz="0.356 0 -0.363"/>
+      <geometry>
+        <mesh filename="package://walle_description/meshes/neck1.dae"/>
+      </geometry>
+    </visual>
+  </link>
+  
+  <joint name="neck2_joint" type="revolute">
+    <axis xyz="0 1 0"/>
+    <limit effort="1000.0" lower="-1.57" upper="1.57" velocity="0.5"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="neck1"/>
+    <child link="neck2"/>
+  </joint>
+  
+  <link name="neck2">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://walle_description/meshes/neck2.dae"/>
+      </geometry>
+    </visual>
+  </link>
+  
+</robot>

@@ -1,0 +1,8 @@
+digraph G {
+"base_link" -> "neck1"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10.203\nBuffer length: 4.9\nMost recent transform: 1683823300.399\nOldest transform: 1683823295.499\n"];
+"neck1" -> "neck2"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10.203\nBuffer length: 4.9\nMost recent transform: 1683823300.399\nOldest transform: 1683823295.499\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1683823300.5102031"[ shape=plaintext ] ;
+}->"base_link";
+}
