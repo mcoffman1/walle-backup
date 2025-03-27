@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wall-E</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: 3rem;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0px;
+            margin-top: 50px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 200px;
+            /*border: 1px solid black;  black green for the border */
+            background-color: green; /* Green background */
+            color: white; /* White text for contrast */
+            box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 0.5), 
+                        inset 2px 2px 5px rgba(0, 0, 0, 0.2); /* Beveled edge effect */
+            transition: box-shadow 0.2s ease, transform 0.2s ease; /* Smooth interaction effects */
+            /*border-radius: 5px;  Optional: rounded edges */
+        }
+
+        button:hover:not(:disabled) {
+            box-shadow: inset -1px -1px 3px rgba(255, 255, 255, 0.8), 
+                        inset 2px 2px 4px rgba(0, 0, 0, 0.3); /* Slightly different look on hover */
+            transform: translateY(-2px); /* Slight lift effect */
+        }
+
+        button:active:not(:disabled) {
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3), 
+                        inset -2px -2px 5px rgba(255, 255, 255, 0.5); /* Reverse bevel for pressed */
+            transform: translateY(1px); /* Slight pressed effect */
+        }
+
+        button.green {
+            background-color: green;
+            color: white;
+            cursor: not-allowed;
+        }
+
+        button.red {
+            background-color: red;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            background-color: lightgray;
+            color: darkgray;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <h1>Wall-E</h1>
+
+    <div class="button-container" id="buttonContainer"></div>
+
+    <h2>Live Video Feed</h2>
+    <img src="/video_feed" alt="RTP Stream" style="max-width: 100%; height: auto;" />
+
+    <script>
+        const scripts = ["Setup", "Controller", "Scan", "Vision"];
+
+        function createButton(script) {
+            const container = document.getElementById('buttonContainer');
+
+            const startButton = document.createElement('button');
+            startButton.id = `${script}StartButton`;
+            startButton.textContent = `Start ${script}`;
+            startButton.onclick = () => startScript(script);
+
+            const stopButton = document.createElement('button');
+            stopButton.id = `${script}StopButton`;
+            stopButton.textContent = `Stop ${script}`;
+            stopButton.disabled = true;
+            stopButton.onclick = () => stopScript(script);
+
+            container.appendChild(startButton);
+            container.appendChild(stopButton);
+        }
+
+        scripts.forEach(createButton);
+
+        async function startScript(script) {
+            const startButton = document.getElementById(`${script}StartButton`);
+            const stopButton = document.getElementById(`${script}StopButton`);
+
+            try {
+                await fetch(`/start/${script}`, { method: 'POST' });
+                startButton.disabled = true;
+                stopButton.disabled = false;
+                startButton.classList.add('green');
+                stopButton.classList.add('red');
+            } catch (error) {
+                alert(`Failed to start ${script}: ${error.message}`);
+            }
+        }
+
+        async function stopScript(script) {
+            const startButton = document.getElementById(`${script}StartButton`);
+            const stopButton = document.getElementById(`${script}StopButton`);
+
+            try {
+                await fetch(`/stop/${script}`, { method: 'POST' });
+                startButton.disabled = false;
+                stopButton.disabled = true;
+                startButton.classList.remove('green');
+                stopButton.classList.remove('red');
+            } catch (error) {
+                alert(`Failed to stop ${script}: ${error.message}`);
+            }
+        }
+
+        async function updateStatuses() {
+            scripts.forEach(async (script) => {
+                const startButton = document.getElementById(`${script}StartButton`);
+                const stopButton = document.getElementById(`${script}StopButton`);
+
+                try {
+                    const response = await fetch(`/status/${script}`);
+                    const status = await response.json();
+
+                    if (status.status === "running") {
+                        startButton.disabled = true;
+                        stopButton.disabled = false;
+                        startButton.classList.add('green');
+                        stopButton.classList.add('red');
+                    } else {
+                        startButton.disabled = false;
+                        stopButton.disabled = true;
+                        startButton.classList.remove('green');
+                        stopButton.classList.remove('red');
+                    }
+                } catch (error) {
+                    console.error(`Error updating status for ${script}:`, error);
+                }
+            });
+        }
+
+        setInterval(updateStatuses, 2000);
+    </script>
+</body>
+</html>
+
