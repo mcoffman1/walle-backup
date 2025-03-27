@@ -7,3 +7,6 @@
       - slam_gmapping
       - urdf_tutorial
       - jetson inference
+
+## Build and devel folders are not included
+- if you wish to recreate this project you will need to create the packages yourself
