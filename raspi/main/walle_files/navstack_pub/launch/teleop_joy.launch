@@ -1,0 +1,20 @@
+<!--<?xml version="1.0"?>-->
+
+<launch>
+    <!-- Launch the joy node -->
+    <node pkg="joy" type="joy_node" name="joy_node" output="screen">
+        <!-- Parameters for the joy node (optional) -->
+        <param name="dev" value="/dev/input/js0"/>  <!-- Joystick device, adjust as needed -->
+        <param name="deadzone" value="0.1"/>        <!-- Deadzone for joystick axes -->
+        <param name="autorepeat_rate" value="20.0"/> <!-- Autorepeat rate for buttons -->
+    </node>
+
+    <!-- Launch your Python script -->
+    <node pkg="navstack_pub" type="teleop_joy.py" name="joy_teleop" output="screen">
+        <!-- Add parameters if needed -->
+        <param name="linear_axis" value="1"/>
+        <param name="angular_axis" value="0"/>
+        <param name="linear_scale" value="1.4"/>
+        <param name="angular_scale" value="4.5"/>
+    </node>
+</launch>
